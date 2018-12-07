@@ -8,9 +8,24 @@ public class ObserverPattern
 
   public static void Main()
   {
-    Console.WriteLine("hello world");
 
-    // TODO: first an object subscribe to an observable 
+    // create object that implements IObservable
+    WeatherStation weatherStation = new WeatherStation();
+
+    // create object that implements IObserver and add IObservable object
+    PhoneDisplay o1 = new PhoneDisplay(weatherStation);
+    weatherStation.add(o1);
+
+    Webpage o2 = new Webpage(weatherStation);
+    weatherStation.add(o2);
+
+    weatherStation.setTemprature(21);
+    weatherStation.setTemprature(23);
+
+    weatherStation.remove(o1);
+
+    weatherStation.setTemprature(18);
+
   }
 
 }
@@ -29,35 +44,73 @@ public interface IObserver
   void update();
 }
 
-public class ConcreteObserver : IObserver
+public class Webpage : IObserver
 {
 
-  IObservable observable;
+  WeatherStation weatherStation;
 
-  public ConcreteObserver(IObservable o)
+  public string name = "webpage";
+
+  // constructor
+  public Webpage(WeatherStation w)
   {
-    this.observable = o;
+    this.weatherStation = w;
   }
 
   public void update()
   {
-
+    this.printState();
   }
+
+  public void printState()
+  {
+    Console.WriteLine("state of {0}, is {1}", this.name, this.weatherStation.getTemprature());
+  }
+
 }
 
-public class ConcreteObservable : IObservable
+public class PhoneDisplay : IObserver
 {
 
-  List<IObserver> observers = new List<IObserver>();
+  WeatherStation weatherStation;
+
+  public string name = "phoneDisplay";
+
+  // constructor
+  public PhoneDisplay(WeatherStation w)
+  {
+    this.weatherStation = w;
+  }
+
+  public void update()
+  {
+    this.printState();
+  }
+
+  public void printState()
+  {
+    Console.WriteLine("state of {0}, is {1}", this.name, this.weatherStation.getTemprature());
+  }
+
+}
+
+public class WeatherStation : IObservable
+{
+
+  private List<IObserver> observers = new List<IObserver>();
+
+  private int temprature = 0;
 
   public void add(IObserver o)
   {
     observers.Add(o);
+    Console.WriteLine("Adding observer {0}, observers amount {1}", o.ToString(), this.observers.Count);
   }
 
   public void remove(IObserver o)
   {
     observers.Remove(o);
+    Console.WriteLine("Removing observer {0}, observers amount {1}", o.ToString(), this.observers.Count);
   }
 
   public void notify()
@@ -70,12 +123,20 @@ public class ConcreteObservable : IObservable
 
   }
 
-  void setState()
+  // example of a simple implementation of state to be observed
+  public int getTemprature()
   {
-
+    return temprature;
   }
 
-  // method set some state
+  public void setTemprature(int t)
+  {
+    this.temprature = t;
+    Console.WriteLine("Updating observer state to {0}", this.getTemprature());
+
+    // notify all subscribers / observers
+    this.notify();
+  }
 
 }
 
