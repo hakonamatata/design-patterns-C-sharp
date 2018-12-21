@@ -18,13 +18,26 @@ class RandomSingleton : Random
   {
     get
     {
-
       if (_instance == null)
       {
         _instance = new RandomSingleton();
       }
       return _instance;
     }
+  }
+
+}
+
+// example
+public class Solution {
+
+  static void Main(String[] args) {
+
+    while(true) {
+      Console.WriteLine(RandomSingleton.Instance.Next());
+      Console.ReadKey();
+    }
+
   }
 
 }
