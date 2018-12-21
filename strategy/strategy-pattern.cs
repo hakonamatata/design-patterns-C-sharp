@@ -1,7 +1,20 @@
 using System;
 
-// Use composition over inheritance by using interfaces that has replacable behavior. 
-// also allows changing the method behavior during run-time.  
+/*
+
+Definition: 
+
+Define a family of algorithms, encapsulate each one, and make them interchangeable. 
+Strategy lets the algorithm vary independently from clients that use it. 
+
+SOLID principle: 
+
+Use composition over inheritance by using interfaces that has replacable behavior. 
+This allows changing the method behavior during run-time.  
+
+*/
+
+
 public class StrategyPattern
 {
 

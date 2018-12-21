@@ -1,6 +1,11 @@
 using System;
 
 /*
+
+Definition: 
+
+Ensure a class has only one instance and provide a global point of access to it. 
+
 Random class
 
 Represents a pseudo-random number generator, 
@@ -13,6 +18,12 @@ class RandomSingleton : Random
 {
 
   private static RandomSingleton _instance;
+
+  // Constructor is protected, can be accessed from any class in the same assembly
+  protected RandomSingleton()
+  {
+
+  }
 
   public static RandomSingleton Instance
   {
@@ -29,11 +40,14 @@ class RandomSingleton : Random
 }
 
 // example
-public class Solution {
+public class Solution
+{
 
-  static void Main(String[] args) {
+  static void Main(String[] args)
+  {
 
-    while(true) {
+    while (true)
+    {
       Console.WriteLine(RandomSingleton.Instance.Next());
       Console.ReadKey();
     }

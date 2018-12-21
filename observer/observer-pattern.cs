@@ -1,8 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-// Observer / Subscriber pattern for getting data when object has changed, 
-// instead of "pulling" data on a regular basis
+/*
+
+Definition: 
+
+Define a one-to-many dependency between objects so that when one object changes state, 
+all its dependents are notified and updated automatically. 
+
+*/
 public class ObserverPattern
 {
 
