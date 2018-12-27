@@ -1,4 +1,4 @@
-# design-patterns-C-sharp
+# Design Patterns and snippets in C#
 Sample implementation of different common design patterns and useful snippets for future reference.
 Written in C#
 
