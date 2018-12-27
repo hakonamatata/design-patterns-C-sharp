@@ -11,4 +11,8 @@ Written in C#
 * Strategy pattern 
 
 
+## List of Snippets
+
+* Read arguments from Main
+* Read console input
 
