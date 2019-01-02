@@ -2,77 +2,83 @@
 
 namespace decorator_console
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
-      Console.WriteLine("Hello Decorator!");
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello Decorator!");
 
-      Decaf decaf = new Decaf();
-      decaf.getDescription();
-      decaf.getCost();
+            Decaf decaf = new Decaf();
+            decaf.getDescription();
+            decaf.getCost();
 
-    }
-  }
-
-  public abstract class Beverage
-  {
-
-    protected double _cost = 0;
-    protected string _description = "empty";
-
-    public virtual double getCost()
-    {
-      Console.WriteLine("cost: {0}", _cost);
-      return this._cost;
+        }
     }
 
-    public virtual void getDescription()
+    public abstract class Beverage
     {
-      Console.WriteLine("description: {0}", _description);
+
+        protected double _cost = 0;
+        protected string _description = "empty";
+
+        public abstract double getCost();
+
+        public abstract void getDescription();
+
     }
 
-  }
-
-  // decorator IS a Beverage and HAS a Beverage
-  public class BeverageDecorator : Beverage
-  {
-    protected Beverage _beverage;
-
-    public BeverageDecorator(Beverage beverage)
+    // decorator IS a Beverage and HAS a Beverage
+    public abstract class BeverageDecorator : Beverage
     {
-      this._beverage = beverage;
+        public BeverageDecorator(Beverage beverage) : base() { }
     }
 
-  }
-
-  public class Decaf : Beverage
-  {
-
-    public override double getCost()
+    public class Decaf : Beverage
     {
-      base._cost = 1.25;
-      return this._cost;
+
+        public override double getCost()
+        {
+            return 1.25;
+        }
+
+        public override void getDescription()
+        {
+            throw new NotImplementedException();
+        }
     }
 
-  }
-
-  public class Espresso : Beverage
-  {
-
-    public override double getCost()
+    public class Espresso : Beverage
     {
-      base._cost = 3.15;
-      return this._cost;
-    }
 
-  }
+        public override double getCost()
+        {
+            return 3.15;
+        }
+
+        public override void getDescription()
+        {
+            throw new NotImplementedException();
+        }
+    }
 
     // you can rap the Soy or Caramel beverage decorator around Espresso or Decaf
     public class SoyBeverageDecorator : BeverageDecorator
     {
+        protected Beverage _beverage;
+
         public SoyBeverageDecorator(Beverage beverage) : base(beverage)
         {
+            this._beverage = beverage;
+        }
+
+        public override double getCost()
+        {
+            return this._beverage.getCost() + 0.25;
+        }
+
+        public override void getDescription()
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -80,6 +86,16 @@ namespace decorator_console
     {
         public CaramelBeverageDecorator(Beverage beverage) : base(beverage)
         {
+        }
+
+        public override double getCost()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void getDescription()
+        {
+            throw new NotImplementedException();
         }
     }
 

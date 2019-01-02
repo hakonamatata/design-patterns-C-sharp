@@ -14,6 +14,17 @@ namespace decorator_test
         }
 
         [Fact]
+        public void TestDecafCost2()
+        {
+            Beverage coffee = new Decaf();
+
+            // add soy to Decaf coffee
+            coffee = new SoyBeverageDecorator(coffee);
+
+            Assert.Equal(1.50, coffee.getCost());
+        }
+
+        [Fact]
         public void TestEspresso1()
         {
             Beverage coffee = new Espresso();
