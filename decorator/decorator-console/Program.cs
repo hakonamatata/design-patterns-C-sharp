@@ -1,5 +1,14 @@
 ﻿using System;
 
+/*
+
+Definition:
+
+Attach additional responsibilities to an object dynamically. 
+Decorators provide a flexible alternative to subclassing for extending functionality. 
+
+*/
+
 namespace decorator_console
 {
     class Program
@@ -8,9 +17,9 @@ namespace decorator_console
         {
             Console.WriteLine("Hello Decorator!");
 
-            Decaf decaf = new Decaf();
-            decaf.getDescription();
-            decaf.getCost();
+            // Decaf decaf = new Decaf();
+            // decaf.getDescription();
+            // decaf.getCost();
 
         }
     }

@@ -9,6 +9,7 @@ Written in C#
 * Observer pattern 
 * ingleton pattern 
 * Strategy pattern 
+* Factory Method Pattern
 
 
 ## List of Snippets
