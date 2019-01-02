@@ -84,13 +84,16 @@ namespace decorator_console
 
     public class CaramelBeverageDecorator : BeverageDecorator
     {
+        protected Beverage _beverage;
+
         public CaramelBeverageDecorator(Beverage beverage) : base(beverage)
         {
+            this._beverage = beverage;
         }
 
         public override double getCost()
         {
-            throw new NotImplementedException();
+            return this._beverage.getCost() + 0.50;
         }
 
         public override void getDescription()
