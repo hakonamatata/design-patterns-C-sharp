@@ -21,10 +21,10 @@ Written in C#
 
 To compile and run the strategy pattern example (assumes you have the csc compiler installed and added as a enviroment variable)
 
-`cd .\strategy\`
-
-`csc .\strategy-pattern.cs`
-
-`.\strategy-pattern.exe`
+```
+cd .\strategy\
+csc .\strategy-pattern.cs
+.\strategy-pattern.exe
+```
 
 
