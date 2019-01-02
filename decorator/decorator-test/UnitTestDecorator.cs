@@ -10,14 +10,14 @@ namespace decorator_test
         public void TestDecafCost1()
         {
             Beverage coffee = new Decaf();
-            Assert.Equal(1, coffee.getCost());
+            Assert.Equal(1.25, coffee.getCost());
         }
 
         [Fact]
         public void TestEspresso1()
         {
             Beverage coffee = new Espresso();
-            Assert.Equal(3, coffee.getCost());
+            Assert.Equal(3.15, coffee.getCost());
         }
     }
 }
