@@ -18,16 +18,33 @@ Written in C#
 * Read console input
 
 
-## HOW TO
+## HOW TO RUN
+
+I have for the most part written everything in a single .cs file to make it as easy as possible. 
 
 To compile and run the strategy pattern example (assumes you have the csc compiler installed and added as a enviroment variable)
+Go to the correct folder, compile the .cs file to a runnable exe and run the program from the command line. 
 
-
+Compile and run
 ```
 cd .\strategy\
 csc .\strategy-pattern.cs
 .\strategy-pattern.exe
 ```
 
-To compile and run the decorator pattern open .sln project in visual studio. 
+Some projects have been made in Visual Studio. One for a simple console application and one xunit project to run test cases.
+
+Test project
+```
+cd .\decorator\
+dotnet test
+
+Starting test execution, please wait...
+
+Total tests: 5. Passed: 5. Failed: 0. Skipped: 0.
+Test Run Successful.
+Test execution time: 2,2019 Seconds
+
+```
+
 
