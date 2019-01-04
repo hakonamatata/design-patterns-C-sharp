@@ -94,7 +94,6 @@ public class RandomObstacleCreator : IObstacleFactory
     switch (r)
     {
       case 0:
-
         // each object created can also have different properties based on some bussiness logic in the factory
         return new Alien();
       case 1:
