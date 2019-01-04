@@ -16,42 +16,57 @@ public class Program
   {
     Console.WriteLine("Hello Factory");
 
-    RandomObstacleCreator factory = new RandomObstacleCreator();
+    // example of a factory that create object with Random types
+    IObstacleFactory factory = new RandomObstacleCreator();
 
-    Console.WriteLine(factory.CreateObstacle());
+    // create five random obstacles 
+    IObstacle o1 = factory.CreateObstacle();
+    IObstacle o2 = factory.CreateObstacle();
+    IObstacle o3 = factory.CreateObstacle();
+    IObstacle o4 = factory.CreateObstacle();
+    IObstacle o5 = factory.CreateObstacle();
+
+    Console.WriteLine(o1);
+    Console.WriteLine(o2);
+    Console.WriteLine(o3);
+    Console.WriteLine(o4);
+    Console.WriteLine(o5);
 
   }
 
 }
 
-public enum ObstacleType
+// Random Singleton from other example!
+class RandomSingleton : Random
 {
-    Rock,
-    Ship,
-    Alien
+
+  private static RandomSingleton _instance;
+
+  // Constructor is protected, can be accessed from any class in the same assembly
+  protected RandomSingleton() { }
+
+  public static RandomSingleton Instance
+  {
+    get
+    {
+      if (_instance == null)
+      {
+        _instance = new RandomSingleton();
+      }
+      return _instance;
+    }
+  }
+
 }
 
 public interface IObstacle
 {
-  ObstacleType GetType();
+  // ObstacleType GetObstacleType();
 }
 
-public class Obstacle : IObstacle
-{
-
-  private string _name;
-
-  public Obstacle(string name)
-  {
-    this._name = name;
-  }
-
-  public override String ToString()
-  {
-    return this._name;
-  }
-
-}
+public class Rock : IObstacle { }
+public class Alien : IObstacle { }
+public class Ship : IObstacle { }
 
 // creator of some shared type
 public interface IObstacleFactory
@@ -63,9 +78,75 @@ public interface IObstacleFactory
 public class RandomObstacleCreator : IObstacleFactory
 {
 
+  // create a random object that inherit IObstacle properties
   public IObstacle CreateObstacle()
   {
-    return new Obstacle("Large Rock");
+    int r = RandomSingleton.Instance.Next(0, 3);
+    switch (r)
+    {
+      case 0:
+        return new Alien();
+      case 1:
+        return new Rock();
+      case 2:
+        return new Ship();
+      default:
+        return null;
+    }
+
   }
 
 }
+
+/* 
+
+
+public enum ObstacleType
+{
+  Rock,
+  Ship,
+  Alien
+}
+
+public class Obstacle : IObstacle
+{
+  private ObstacleType _type;
+
+  public Obstacle(ObstacleType type)
+  {
+    this._type = type;
+  }
+
+  public ObstacleType GetObstacleType()
+  {
+    return this._type;
+  }
+
+}
+
+public class RandomObstacleCreator : IObstacleFactory
+{
+
+  // could also return a Alien, Rock or Ship object that are extentions of IObstacle 
+  public IObstacle CreateObstacle()
+  {
+
+    Random rand = new Random();
+    int r = rand.Next(0, 3);
+
+    switch (r)
+    {
+      case 0:
+        return new Obstacle(ObstacleType.Alien);
+      case 1:
+        return new Obstacle(ObstacleType.Rock);
+      case 2:
+        return new Obstacle(ObstacleType.Ship);
+      default:
+        return null;
+    }
+
+  }
+
+}
+*/
