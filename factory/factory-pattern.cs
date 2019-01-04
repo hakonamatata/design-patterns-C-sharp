@@ -26,11 +26,22 @@ public class Program
     IObstacle o4 = factory.CreateObstacle();
     IObstacle o5 = factory.CreateObstacle();
 
+    // print object type
     Console.WriteLine(o1);
     Console.WriteLine(o2);
     Console.WriteLine(o3);
     Console.WriteLine(o4);
     Console.WriteLine(o5);
+
+    // example result
+    /*
+    Hello Factory
+    Ship
+    Alien
+    Ship
+    Alien
+    Rock
+    */
 
   }
 
