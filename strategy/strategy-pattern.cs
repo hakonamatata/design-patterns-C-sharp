@@ -39,7 +39,8 @@ public class StrategyPattern
     // wild duck can no longer fly!
     wild.setFlyBehavior(new NoFlying());
 
-    Console.WriteLine(Environment.NewLine + "Wild duck:");
+    Console.WriteLine(Environment.NewLine + "Change Wild duck fly behavior during run-time!");
+    Console.WriteLine("Wild duck:");
     wild.fly();
 
 
