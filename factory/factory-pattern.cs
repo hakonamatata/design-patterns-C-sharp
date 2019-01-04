@@ -64,6 +64,7 @@ public interface IObstacle
   // ObstacleType GetObstacleType();
 }
 
+// different objects that can be created by different factory methods
 public class Rock : IObstacle { }
 public class Alien : IObstacle { }
 public class Ship : IObstacle { }
@@ -85,6 +86,8 @@ public class RandomObstacleCreator : IObstacleFactory
     switch (r)
     {
       case 0:
+
+        // each object created can also have different properties based on some bussiness logic in the factory
         return new Alien();
       case 1:
         return new Rock();
