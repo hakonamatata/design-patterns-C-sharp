@@ -10,6 +10,7 @@ Written in C#
 * ingleton pattern 
 * Strategy pattern 
 * Factory Method Pattern
+* Command Pattern
 
 
 ## List of Snippets
