@@ -16,7 +16,7 @@ public class Program
   {
     Console.WriteLine("Hello Factory");
 
-    // example of a factory that create object with Random types
+    // example of a factory that create random subtypes of IObstacle (Alien, Rock, Ship)
     IObstacleFactory factory = new RandomObstacleCreator();
 
     // create five random obstacles 
