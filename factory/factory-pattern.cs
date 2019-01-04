@@ -70,10 +70,7 @@ class RandomSingleton : Random
 
 }
 
-public interface IObstacle
-{
-  // ObstacleType GetObstacleType();
-}
+public interface IObstacle { }
 
 // different objects that can be created by different factory methods
 public class Rock : IObstacle { }
@@ -111,56 +108,3 @@ public class RandomObstacleCreator : IObstacleFactory
   }
 
 }
-
-/* 
-
-
-public enum ObstacleType
-{
-  Rock,
-  Ship,
-  Alien
-}
-
-public class Obstacle : IObstacle
-{
-  private ObstacleType _type;
-
-  public Obstacle(ObstacleType type)
-  {
-    this._type = type;
-  }
-
-  public ObstacleType GetObstacleType()
-  {
-    return this._type;
-  }
-
-}
-
-public class RandomObstacleCreator : IObstacleFactory
-{
-
-  // could also return a Alien, Rock or Ship object that are extentions of IObstacle 
-  public IObstacle CreateObstacle()
-  {
-
-    Random rand = new Random();
-    int r = rand.Next(0, 3);
-
-    switch (r)
-    {
-      case 0:
-        return new Obstacle(ObstacleType.Alien);
-      case 1:
-        return new Obstacle(ObstacleType.Rock);
-      case 2:
-        return new Obstacle(ObstacleType.Ship);
-      default:
-        return null;
-    }
-
-  }
-
-}
-*/
