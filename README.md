@@ -22,7 +22,7 @@ Written in C#
 
 I have for the most part written everything in a single .cs file to make it as easy as possible. 
 
-To compile and run the strategy pattern example (assumes you have the csc compiler installed and added as a enviroment variable)
+To compile and run the strategy pattern example (assumes you have the csc compiler installed and added as a enviroment variable).
 Go to the correct folder, compile the .cs file to a runnable exe and run the program from the command line. 
 
 Compile and run

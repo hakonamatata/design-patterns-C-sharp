@@ -20,16 +20,29 @@ public class StrategyPattern
 
   static public void Main()
   {
-    Console.WriteLine("hello StrategyPattern!");
 
+    // create duck object using different implementations of the fly() and quack() methods
     Duck wild = new Duck(new DefaultFlying(), new DefaultQuack());
     Duck rubber = new Duck(new NoFlying(), new RubberQuack());
 
+    Console.WriteLine("Wild duck:");
     wild.fly();
     wild.quack();
 
+    Console.WriteLine();
+    Console.WriteLine("Rubber duck:" + Environment.NewLine);
+
     rubber.fly();
     rubber.quack();
+
+    // change an objects method implementation during run-time
+    // wild duck can no longer fly!
+    wild.setFlyBehavior(new NoFlying());
+
+    Console.WriteLine(Environment.NewLine + "Wild duck:");
+    wild.fly();
+
+
   }
 
 }
@@ -64,6 +77,16 @@ public class Duck
   public virtual void quack()
   {
     this.quackBehavior.execute();
+  }
+
+  // enable changing the flyBehavior during run-time
+  public void setFlyBehavior(IFlyBehavior flyBehavior) {
+    this.flyBehavior = flyBehavior;
+  }
+
+  // enable changing the quackBehavior during run-time
+  public void setQuackBehavior(IQuackBehavior quackBehavior) {
+    this.quackBehavior = quackBehavior;
   }
 
 }
