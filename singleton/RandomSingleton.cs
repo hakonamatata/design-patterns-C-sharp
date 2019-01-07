@@ -25,6 +25,7 @@ class RandomSingleton : Random
 
   }
 
+  // instead of using the constructor, call RandomSingleton.Instance() 
   public static RandomSingleton Instance
   {
     get
