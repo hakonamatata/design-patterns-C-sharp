@@ -19,7 +19,7 @@ class RandomSingleton : Random
 
   private static RandomSingleton _instance;
 
-  // Constructor is protected, can be accessed from any class in the same assembly
+  // Constructor is protected, no other class can create a new RandomSingleton instance using the new keyword
   protected RandomSingleton()
   {
 
