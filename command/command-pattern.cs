@@ -20,7 +20,7 @@ public class Program
     // create light
     ReceiverLight light = new ReceiverLight();
 
-    // turn light on
+    // create a "turn light on" command with reference to the light we want to change
     LightSwichOnCommand onCommand = new LightSwichOnCommand(light);
 
     // create remote
@@ -31,6 +31,8 @@ public class Program
 
     // undo last command
     remote.undo();
+
+    // undo non-existing next command
     remote.undo();
 
   }
