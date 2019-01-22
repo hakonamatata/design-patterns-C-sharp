@@ -40,7 +40,7 @@ public class Program
 }
 
 // any command can act upon receiver
-// in this example, imagine we are sending commmands to a light switch
+// in this example, imagine we are sending commmands to a light
 class ReceiverLight
 {
   public void turnOnLight()
@@ -93,6 +93,7 @@ interface ICommand
   void undo();
 }
 
+// can have many more commands, OffCommand, DimUpCommand, DimDownCommand, ChangeColorCommand etc
 class LightSwichOnCommand : ICommand
 {
 
