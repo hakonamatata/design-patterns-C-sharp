@@ -11,6 +11,7 @@ Written in C#
 * Strategy pattern 
 * Factory Method Pattern
 * Command Pattern
+* Adapter Pattern
 
 
 ## List of Snippets
