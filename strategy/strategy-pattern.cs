@@ -2,15 +2,15 @@ using System;
 
 /*
 
-Definition: 
+Definition:
 
-Define a family of algorithms, encapsulate each one, and make them interchangeable. 
-Strategy lets the algorithm vary independently from clients that use it. 
+Define a family of algorithms, encapsulate each one, and make them interchangeable.
+Strategy lets the algorithm vary independently from clients that use it.
 
-SOLID principle: 
+SOLID principle:
 
-Use composition over inheritance by using interfaces that has replacable behavior. 
-This allows changing the method behavior during run-time.  
+Use composition over inheritance by using interfaces that has replacable behavior.
+This allows changing the method behavior during run-time.
 
 */
 
@@ -42,18 +42,16 @@ public class StrategyPattern
     Console.WriteLine(Environment.NewLine + "Change Wild duck fly behavior during run-time!");
     Console.WriteLine("Wild duck:");
     wild.fly();
-
-
   }
 
 }
 
-public interface IQuackBehavior
-{
-  void execute();
-}
+// public interface IQuackBehavior
+// {
+//   void execute();
+// }
 
-public interface IFlyBehavior
+public interface IBehavior
 {
   void execute();
 }
@@ -61,10 +59,10 @@ public interface IFlyBehavior
 public class Duck
 {
 
-  IFlyBehavior flyBehavior;
-  IQuackBehavior quackBehavior;
+  IBehavior flyBehavior;
+  IBehavior quackBehavior;
 
-  public Duck(IFlyBehavior flyBehavior, IQuackBehavior quackBehavior)
+  public Duck(IBehavior flyBehavior, IBehavior quackBehavior)
   {
     this.flyBehavior = flyBehavior;
     this.quackBehavior = quackBehavior;
@@ -81,18 +79,18 @@ public class Duck
   }
 
   // enable changing the flyBehavior during run-time
-  public void setFlyBehavior(IFlyBehavior flyBehavior) {
+  public void setFlyBehavior(IBehavior flyBehavior) {
     this.flyBehavior = flyBehavior;
   }
 
   // enable changing the quackBehavior during run-time
-  public void setQuackBehavior(IQuackBehavior quackBehavior) {
+  public void setQuackBehavior(IBehavior quackBehavior) {
     this.quackBehavior = quackBehavior;
   }
 
 }
 
-public class DefaultQuack : IQuackBehavior
+public class DefaultQuack : IBehavior
 {
   public void execute()
   {
@@ -100,7 +98,7 @@ public class DefaultQuack : IQuackBehavior
   }
 }
 
-public class RubberQuack : IQuackBehavior
+public class RubberQuack : IBehavior
 {
   public void execute()
   {
@@ -108,7 +106,7 @@ public class RubberQuack : IQuackBehavior
   }
 }
 
-public class DefaultFlying : IFlyBehavior
+public class DefaultFlying : IBehavior
 {
   public void execute()
   {
@@ -116,7 +114,7 @@ public class DefaultFlying : IFlyBehavior
   }
 }
 
-public class NoFlying : IFlyBehavior
+public class NoFlying : IBehavior
 {
   public void execute()
   {
